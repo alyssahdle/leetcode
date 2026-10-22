@@ -1,0 +1,36 @@
+class Solution(object):
+    def reverseVowels(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+        
+        vowels = {'a', 'e', 'i', 'o', 'u', 'A', 'E', 'I', 'O', 'U'}
+
+        s = list(s)
+        # Create a pointer at beginning of string
+        left = 0
+
+        # Create a pointer at end of string
+        right = len(s) - 1
+
+        while left < right:
+            # Move pointers until they are on a vowel
+            while left < right and s[left] not in vowels:
+                left += 1
+
+            while left < right and s[right] not in vowels:
+                right -= 1
+
+            # Swap the vowels, then move each pointer one letter
+            temp = s[left]
+            s[left] = s[right]
+            s[right] = temp
+            left += 1
+            right -=1
+
+        s = "".join(s)
+        return s
+
+            
+
